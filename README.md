@@ -15,3 +15,5 @@
 
 - nginx
 - docker
+
+**后端安装教程** >>> `backend/README.md`
