@@ -23,9 +23,14 @@ async def startup_event():
     # https://github.com/tortoise/tortoise-orm/issues/872
     logger.success("💡💡💡 项目启动 💡💡💡")
 
-
     await Tortoise.init(db_url=settings.DB_URI,
-                        modules={"models": get_models_file('models', ['base.py'])},
+                        modules={"models": [
+                            "models.user",
+                            "models.permission",
+                            "models.role",
+                            "models.user_role",
+                            "models.role_permission",
+                        ]},
                         timezone=settings.DB_TZ)
     await Tortoise.generate_schemas()
     # 批量插入数据
